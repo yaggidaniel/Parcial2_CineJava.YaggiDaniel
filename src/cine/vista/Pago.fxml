@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="cine.controlador.PagoController"
+      alignment="TOP_CENTER"
+      spacing="20"
+      prefWidth="600" prefHeight="500"
+      styleClass="fondo-crema">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox alignment="CENTER">
+        <ImageView fitWidth="260" preserveRatio="true">
+            <image>
+                <Image url="@recursos/pago.png"/>
+            </image>
+        </ImageView>
+    </HBox>
+
+    <Label text="Confirmar pago" styleClass="titulo-form">
+        <font>
+            <Font size="26"/>
+        </font>
+    </Label>
+
+    <VBox spacing="10" alignment="TOP_LEFT" prefWidth="560">
+        <Label fx:id="lblPelicula" wrapText="true"/>
+        <Label fx:id="lblSala"/>
+        <Label fx:id="lblButacas" wrapText="true"/>
+        <Label fx:id="lblTotal"/>
+    </VBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="btnConfirmar"
+                text="Confirmar pago"
+                onAction="#confirmarPago"
+                styleClass="boton-primario"
+                prefWidth="170"/>
+
+        <Button fx:id="btnCancelar"
+                text="Cancelar"
+                onAction="#cancelar"
+                styleClass="boton-secundario"
+                prefWidth="170"/>
+    </HBox>
+
+</VBox>

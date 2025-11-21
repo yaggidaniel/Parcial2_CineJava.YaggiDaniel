@@ -1,0 +1,143 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 nov 2025, 11:50:56 a. m.
+    Author     : verra
+*/
+
+.butaca-disponible {
+    -fx-background-color: #6cc070;   /* verde */
+}
+
+.butaca-seleccionada {
+    -fx-background-color: #f5c542;   /* amarillo */
+}
+
+.butaca-ocupada {
+    -fx-background-color: #2b2b2b;   /* negro suave */
+    -fx-text-fill: white;
+
+}
+
+.butaca-pasillo {
+    -fx-background-color: #cfcfcf;   /* gris */
+}
+
+
+.tarjeta-pelicula {
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-spacing: 8;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 2);
+}
+
+.tarjeta-pelicula:hover {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.30), 15, 0, 0, 4);
+}
+
+.titulo-pelicula {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.sinopsis-pelicula {
+    -fx-font-size: 12px;
+    -fx-text-fill: #555;
+}
+
+.btn-nav {
+    -fx-background-color: white;
+    -fx-border-color: #bbbbbb;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-padding: 8 12;
+    -fx-font-size: 22px;
+}
+
+.btn-nav:hover {
+    -fx-background-color: #f2f2f2;
+}
+
+
+
+/* =============================== */
+/*   PALETA DE COLORES DE LA APP   */
+/* =============================== */
+
+.fondo-crema {
+    -fx-background-color: #F3F1EA; /* fondo cálido tipo cine */
+}
+
+/* Panel blanco para Login / Registro / Pago */
+.form-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: rgba(0,0,0,0.15);
+    -fx-padding: 22;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.20), 16, 0, 0, 3);
+}
+
+/* Título principal (Bienvenidos / Registrate / etc.) */
+.titulo-form {
+    -fx-text-fill: #333;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+/* TextFields */
+.text-field, .password-field, .combo-box, .choice-box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-text-fill: #333;
+}
+
+.text-field:focused, .password-field:focused,
+.combo-box:focused, .choice-box:focused {
+    -fx-border-color: #FFB300;
+}
+
+/* Mensaje de error */
+.mensaje-error {
+    -fx-text-fill: #E53935;
+    -fx-font-size: 12px;
+}
+
+/* BOTÓN PRIMARIO */
+.boton-primario {
+    -fx-background-color: #FFB300;
+    -fx-text-fill: #000;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18;
+}
+
+.boton-primario:hover {
+    -fx-background-color: #FF9800;
+}
+
+/* BOTÓN SECUNDARIO */
+.boton-secundario {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: #000;
+    -fx-background-radius: 8;
+    -fx-padding: 9 18;
+}
+
+.boton-secundario:hover {
+    -fx-background-color: #D5D5D5;
+}
+
+.titulo-ticket {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
