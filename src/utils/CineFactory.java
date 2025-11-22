@@ -72,6 +72,29 @@ public class CineFactory {
         p8.setClasificacionEdad(13);
         p8.setSinopsis("No disponible, compra pochoclos");
         p8.setRutaImagen(null);
+        
+        
+        Pelicula p9 = new Pelicula();
+        p9.setTitulo("X-Men");
+        p9.setGenero("Ciencia ficcón");
+        p9.setClasificacionEdad(13);
+        p9.setSinopsis("Mutantes y mutantas.");
+        p9.setRutaImagen("/cine/vista/recursos/xmen.png");
+        
+        Pelicula p10 = new Pelicula();
+        p10.setTitulo("Pulp Fiction");
+        p10.setGenero("Crimen");
+        p10.setClasificacionEdad(13);
+        p10.setSinopsis("Cosas de Tarantino.");
+        p10.setRutaImagen("/cine/vista/recursos/pulp.png");
+        
+        Pelicula p11 = new Pelicula();
+        p11.setTitulo("Star Trek");
+        p11.setGenero("Viajes espaciales");
+        p11.setClasificacionEdad(13);
+        p11.setSinopsis("Subanme un punto por la referencia");
+        p11.setRutaImagen("/cine/vista/recursos/strartrek.png");
+        
 
         String[] esquemaSala1 = {
             "OOOOOOOO",
@@ -101,8 +124,10 @@ public class CineFactory {
         Sala sala5 = new Sala(5, 2000.0, p5, crearMatrizButacas(esquemaSala2));
         Sala sala6 = new Sala(6, 2000.0, p6, crearMatrizButacas(esquemaSala3));
         Sala sala7 = new Sala(7, 2000.0, p7, crearMatrizButacas(esquemaSala1));
-        Sala sala8 = new Sala(8, 2000.0, p8, crearMatrizButacas(esquemaSala1));
-
+        Sala sala8 = new Sala(8, 2000.0, p8, crearMatrizButacas(esquemaSala3));
+        Sala sala9 = new Sala(9, 2500.0, p9, crearMatrizButacas(esquemaSala1));
+        Sala sala10 = new Sala(10, 2800.0, p10, crearMatrizButacas(esquemaSala2));
+        Sala sala11 = new Sala(11, 2000.0, p11, crearMatrizButacas(esquemaSala3));
 
         cine.agregarSala(sala1);
         cine.agregarSala(sala2);
@@ -112,6 +137,9 @@ public class CineFactory {
         cine.agregarSala(sala6);
         cine.agregarSala(sala7);
         cine.agregarSala(sala8);
+        cine.agregarSala(sala9);
+        cine.agregarSala(sala10);
+        cine.agregarSala(sala11);
 
 
         return cine;

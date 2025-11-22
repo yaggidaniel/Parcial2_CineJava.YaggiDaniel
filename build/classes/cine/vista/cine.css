@@ -105,6 +105,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-color: #FFB300;
 }
 
+.input-chico {
+    -fx-pref-width: 280px;
+    -fx-pref-height: 28px;
+    -fx-font-size: 14px;
+}
+
 /* Mensaje de error */
 .mensaje-error {
     -fx-text-fill: #E53935;

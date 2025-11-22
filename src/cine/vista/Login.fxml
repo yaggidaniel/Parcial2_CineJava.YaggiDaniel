@@ -26,8 +26,7 @@
         </ImageView>
 
         <Label text="Usuario" />
-        <TextField fx:id="txtEmail" prefHeight="25.0" prefWidth="525.0" />
-
+        <TextField fx:id="txtEmail" styleClass="text-field input-chico"/>
         <Label text="Contraseña" />
         <PasswordField fx:id="txtPass" styleClass="text-field" />
 

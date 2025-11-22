@@ -27,10 +27,10 @@
         </ImageView>
 
         <Label text="Email" />
-        <TextField fx:id="txtEmail" prefHeight="25.0" prefWidth="512.0" styleClass="text-field" />
+        <TextField fx:id="txtEmail" prefHeight="28.0" prefWidth="300.0" styleClass="text-field" />
 
         <Label text="Contraseña" />
-        <PasswordField fx:id="txtPass" styleClass="text-field" />
+        <PasswordField fx:id="txtPass" prefHeight="28" prefWidth="300" />
 
         <Label fx:id="lblError" styleClass="mensaje-error" />
 
