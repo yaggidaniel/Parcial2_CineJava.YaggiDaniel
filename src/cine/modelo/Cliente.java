@@ -7,6 +7,8 @@ package cine.modelo;
 import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 public class Cliente extends Persona implements Serializable {
     
     private String contraseniaHasheada;
+    private List<Entrada> entradas = new ArrayList<>();
 
     public Cliente() {
     }
@@ -31,6 +34,18 @@ public class Cliente extends Persona implements Serializable {
     public void setContraseniaHasheada(String contraseniaHasheada) {
         this.contraseniaHasheada = contraseniaHasheada;
     }
+
+    public List<Entrada> getEntradas() {
+        return entradas;
+    }
+    
+     public void agregarEntrada(Entrada e) {
+        if (e != null) {
+            entradas.add(e);
+        }
+    }
+    
+    
     
     private String generarHash(String texto) {
         if(texto == null){

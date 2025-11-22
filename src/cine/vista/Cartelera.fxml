@@ -8,41 +8,103 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="751.0" prefWidth="1023.0" spacing="20" styleClass="fondo-crema" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cine.controlador.CarteleraController">
+<VBox alignment="TOP_CENTER"
+      prefHeight="751.0"
+      prefWidth="1023.0"
+      spacing="20"
+      styleClass="fondo-crema"
+      xmlns="http://javafx.com/javafx/25"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cine.controlador.CarteleraController">
 
-   <children>
-      <Button fx:id="cerrarSesion" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="31.0" prefWidth="130.0" styleClass="boton-secundario" text="Cerrar sesión" textAlignment="CENTER" />
-      <ImageView fitHeight="54.0" fitWidth="788.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@recursos/cartelera.png" />
-         </image>
-      </ImageView>
+    <children>
 
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="865.0" text="Ahora en cartelera" textAlignment="CENTER">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Label>
+        <HBox spacing="20" alignment="CENTER" prefHeight="70.0">
+            <children>
 
-      <HBox fx:id="contenedorFlechas" alignment="CENTER" prefHeight="511.0" prefWidth="1019.0" spacing="20.0">
-         <children>
+                <Button fx:id="btnMisEntradas"
+                        text="Mis entradas"
+                        onAction="#verMisEntradas"
+                        styleClass="boton-secundario"/>
 
-            <Button fx:id="btnPrev" alignment="CENTER" mnemonicParsing="false" onAction="#moverIzquierda" prefHeight="80.0" prefWidth="50.0" styleClass="btn-nav" text="⟨" />
+                <Region HBox.hgrow="ALWAYS"/>
 
-            <ScrollPane fx:id="scrollCarrusel" fitToHeight="true" fitToWidth="false" hbarPolicy="NEVER" prefHeight="404.0" prefWidth="800.0" styleClass="fondo-crema" vbarPolicy="NEVER">
-               <content>
-                  <HBox fx:id="carruselBox" alignment="CENTER_LEFT" spacing="20.0">
-                     <padding>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </padding>
-                  </HBox>
-               </content>
-            </ScrollPane>
+                <ImageView fitHeight="50" preserveRatio="true">
+                    <image>
+                        <Image url="@recursos/cartelera.png"/>
+                    </image>
+                </ImageView>
 
-            <Button fx:id="btnNext" alignment="CENTER" mnemonicParsing="false" onAction="#moverDerecha" prefHeight="80.0" prefWidth="50.0" styleClass="btn-nav" text="⟩" />
-         </children>
-      </HBox>
-   </children>
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button fx:id="cerrarSesion"
+                        text="Cerrar sesión"
+                        onAction="#cerrarSesion"
+                        styleClass="boton-secundario"/>
+            </children>
+        </HBox>
+
+        <Label alignment="CENTER"
+               prefHeight="30"
+               prefWidth="865.0"
+               text="Ahora en cartelera">
+            <font>
+                <Font name="System Bold" size="25.0"/>
+            </font>
+        </Label>
+
+        <HBox fx:id="contenedorFlechas"
+              alignment="CENTER"
+              prefHeight="511.0"
+              prefWidth="1019.0"
+              spacing="20">
+
+            <children>
+
+                <Button fx:id="btnPrev"
+                        alignment="CENTER"
+                        onAction="#moverIzquierda"
+                        prefHeight="80"
+                        prefWidth="50"
+                        styleClass="btn-nav"
+                        text="⟨"/>
+
+                <ScrollPane fx:id="scrollCarrusel"
+                            fitToWidth="false"
+                            fitToHeight="true"
+                            hbarPolicy="NEVER"
+                            vbarPolicy="NEVER"
+                            prefHeight="404.0"
+                            prefWidth="800.0"
+                            styleClass="fondo-crema">
+
+                    <content>
+                        <HBox fx:id="carruselBox"
+                              alignment="CENTER_LEFT"
+                              spacing="20">
+
+                            <padding>
+                                <Insets top="20" right="20" bottom="20" left="20"/>
+                            </padding>
+
+                        </HBox>
+                    </content>
+
+                </ScrollPane>
+
+                <Button fx:id="btnNext"
+                        alignment="CENTER"
+                        onAction="#moverDerecha"
+                        prefHeight="80"
+                        prefWidth="50"
+                        styleClass="btn-nav"
+                        text="⟩"/>
+
+            </children>
+        </HBox>
+
+    </children>
 </VBox>

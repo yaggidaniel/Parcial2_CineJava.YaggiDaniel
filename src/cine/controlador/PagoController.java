@@ -6,11 +6,14 @@ package cine.controlador;
 
 import cine.modelo.Butaca;
 import cine.modelo.Cine;
+import cine.modelo.Cliente;
+import cine.modelo.Entrada;
 import cine.modelo.Sala;
 import cine.persistencia.Repositorio;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javafx.fxml.FXML;
@@ -39,16 +42,15 @@ public class PagoController {
     private Sala sala;
     private Repositorio<Cine> repo;
     private Set<Butaca> butacasSeleccionadas;
+    private Cliente clienteLogueado;
 
-    public void inicializar(Cine cine,
-                            Sala sala,
-                            Repositorio<Cine> repo,
-                            Set<Butaca> butacasSeleccionadas) {
+    public void inicializar(Cine cine, Sala sala, Repositorio<Cine> repo, Cliente clienteLogueado, Set<Butaca> butacasSeleccionadas) {
 
         this.cine = cine;
         this.sala = sala;
         this.repo = repo;
         this.butacasSeleccionadas = butacasSeleccionadas;
+        this.clienteLogueado = clienteLogueado;
 
         lblPelicula.setText("Película: " + sala.getPelicula().getTitulo());
         lblSala.setText("Sala: " + sala.getNumero());
@@ -66,20 +68,24 @@ public class PagoController {
 
     @FXML
     private void confirmarPago() {
-        // 1) Marcar butacas como ocupadas en el modelo
         for (Butaca b : butacasSeleccionadas) {
             if (!b.estaOcupada() && !b.isEsPasillo()) {
                 b.ocupar();
             }
         }
 
-        // 2) Guardar el cine actualizado
-        repo.guardar(cine);
+        double total = sala.getPrecioSala() * butacasSeleccionadas.size();
+        LocalDateTime fechaYhora = LocalDateTime.now();
 
-        // 3) Mostrar el ticket (bloquea hasta que lo cierran)
+        Entrada entrada = new Entrada(sala.getPelicula().getTitulo(), sala.getNumero(), new ArrayList<>(butacasSeleccionadas), total, fechaYhora);
+
+        clienteLogueado.agregarEntrada(entrada);
+        
+        repo.guardar(cine);
+        
         mostrarTicket();
 
-        // 4) Cerrar esta ventana de pago
+
         cerrarVentana();
     }
 
@@ -113,13 +119,12 @@ public class PagoController {
             ticketStage.initOwner(btnConfirmar.getScene().getWindow());
             ticketStage.initModality(Modality.WINDOW_MODAL);
             ticketStage.setResizable(false);
-            ticketStage.setTitle("Boleto de cine");
+            ticketStage.setTitle("Tu entrada!!");
 
             Scene scene = new Scene(root, 600, 500);
             utils.UiConfig.aplicarCss(scene);
             ticketStage.setScene(scene);
 
-            // Esto bloquea hasta que el usuario cierre el ticket
             ticketStage.showAndWait();
 
         } catch (IOException e) {

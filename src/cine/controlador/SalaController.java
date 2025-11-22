@@ -6,6 +6,7 @@ package cine.controlador;
 
 import cine.modelo.Butaca;
 import cine.modelo.Cine;
+import cine.modelo.Cliente;
 import cine.modelo.Sala;
 import cine.persistencia.Repositorio;
 import java.io.IOException;
@@ -44,16 +45,19 @@ public class SalaController {
     private Cine cine;
     private Sala sala;
     private Repositorio<Cine> repo;
+    private Cliente clienteLogueado;
 
     private final Map<Butaca, Button> mapaButacaBoton = new HashMap<>();
     private final Set<Butaca> butacasSeleccionadas = new HashSet<>();
 
     private Image imgButaca;
 
-    public void inicializar(Cine cine, Sala sala, Repositorio<Cine> repo) {
+    public void inicializar(Cine cine, Sala sala, Repositorio<Cine> repo, Cliente clienteLogueado) {
         this.cine = cine;
         this.sala = sala;
         this.repo = repo;
+        this.clienteLogueado = clienteLogueado;
+
         this.imgButaca = new Image(
                 getClass().getResource("/cine/vista/recursos/butaca.png").toExternalForm()
         );
@@ -130,20 +134,16 @@ public class SalaController {
     @FXML
     private void volverACartelera() {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/cine/vista/Cartelera.fxml")
-            );
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cine/vista/Cartelera.fxml"));
             Parent root = loader.load();
 
             CarteleraController carteleraController = loader.getController();
-            carteleraController.inicializar(cine, repo);
-
-            Scene scene = new Scene(root, 800, 600);
-            utils.UiConfig.aplicarCss(scene); 
+            carteleraController.inicializar(cine, repo, clienteLogueado);
 
             Stage stage = (Stage) gridButacas.getScene().getWindow();
+            Scene scene = new Scene(root, 800, 600);
+            utils.UiConfig.aplicarCss(scene);
             stage.setScene(scene);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -165,19 +165,16 @@ public class SalaController {
             Parent root = loader.load();
 
             PagoController pagoController = loader.getController();
-            pagoController.inicializar(cine, sala, repo, seleccionParaPagar);
+            pagoController.inicializar(cine, sala, repo, clienteLogueado, seleccionParaPagar);
 
             Stage pagoStage = new Stage();
-
-            Scene scene = new Scene(root, 600, 500);
-            utils.UiConfig.aplicarCss(scene);
-
-            pagoStage.setScene(scene);
             pagoStage.initOwner(gridButacas.getScene().getWindow());
             pagoStage.initModality(Modality.APPLICATION_MODAL);
             pagoStage.setTitle("Confirmar pago");
-            pagoStage.setResizable(false);
-            pagoStage.centerOnScreen();
+
+            Scene scene = new Scene(root, 600, 500);
+            utils.UiConfig.aplicarCss(scene);
+            pagoStage.setScene(scene);
 
             pagoStage.showAndWait();
 

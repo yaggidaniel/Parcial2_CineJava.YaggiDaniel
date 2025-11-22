@@ -29,6 +29,7 @@ public class LoginController {
     
     private Cine cine;
     private Repositorio<Cine> repo;
+    private Cliente clienteLogueado;
     
     public void inicializar(Cine cine, Repositorio<Cine> repo) {
         this.cine = cine;
@@ -51,13 +52,14 @@ public class LoginController {
             if (c.credencialesValidas(email, pass)) {
                 lblError.setText("");
                 lblError.setVisible(false);
+                this.clienteLogueado = c;
 
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/cine/vista/Cartelera.fxml"));
                     Parent root = loader.load();
 
                     CarteleraController carteleraController = loader.getController();
-                    carteleraController.inicializar(cine, repo);
+                    carteleraController.inicializar(cine, repo, clienteLogueado);
 
                     Stage stage = (Stage) txtEmail.getScene().getWindow();
                     Scene scene = new Scene(root, 800, 600);
